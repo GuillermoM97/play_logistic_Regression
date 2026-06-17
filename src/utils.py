@@ -306,7 +306,7 @@ def plot_coefficients(coefs, feature_names, title):
 def plot_regularization_path(C_values, coefs_matrix, feature_names, title):
     """Dibuja la ruta de coeficientes contra C en escala logarítmica.
 
-    En scikit-learn, C es el inverso de la fuerza de regularización:
+    En scikit-learn, C controla de forma inversa la fuerza de regularización:
     valores pequeños implican penalización fuerte y valores grandes implican
     penalización débil.
     """
@@ -323,7 +323,7 @@ def plot_regularization_path(C_values, coefs_matrix, feature_names, title):
     ax.axhline(0, color=COLOR_PALETTE["neutral"], linewidth=1)
     ax.set_xscale("log")
     ax.set_title(title)
-    ax.set_xlabel("C = 1 / lambda (escala log)")
+    ax.set_xlabel("C (mayor C = menor penalización)")
     ax.set_ylabel("Coeficiente estandarizado")
     ax.legend(loc="best", fontsize=9)
     fig.tight_layout()
