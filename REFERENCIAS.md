@@ -32,4 +32,5 @@
 
 ## Herramientas
 
+- Waskom, M. L. (2021). seaborn: statistical data visualization. *Journal of Open Source Software*, 6(60), 3021. Describe la biblioteca seaborn y su ecosistema de datasets usados para ejemplos reproducibles. Usado en NB00 de la pista Titanic.
 - Pedregosa, F., et al. (2011). Scikit-learn: Machine Learning in Python. *Journal of Machine Learning Research*, 12, 2825-2830. Describe la biblioteca scikit-learn usada para modelos, pipelines, métricas y validación cruzada. Usado en NB07.

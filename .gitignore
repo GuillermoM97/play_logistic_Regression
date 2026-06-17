@@ -30,8 +30,10 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# Datos grandes: mantener data/processed si son archivos pequenos generados por NB00.
-data/raw/
+# Datos grandes: mantener data/processed si son archivos pequeños generados por NB00.
+data/raw/*
+!data/raw/seaborn/
+!data/raw/seaborn/titanic.csv
 data/external/
 *.zip
 *.tar
