@@ -62,7 +62,7 @@ def load_binary_iris() -> tuple[pd.DataFrame, pd.Series]:
     virginica=1. Setosa se excluye porque es casi trivialmente separable y
     produciria una demostracion menos informativa de la regresion logistica.
 
-    Returns:
+    Devuelve:
         X: DataFrame con las cuatro variables originales de Iris.
         y: Serie binaria con virginica como clase positiva.
     """
@@ -86,13 +86,13 @@ def get_train_test_split(
 ) -> dict[str, object]:
     """Crea un split estratificado y versiones escaladas/no escaladas.
 
-    Args:
+    Parametros:
         X: Matriz de variables. Si es None, se carga Iris binario.
         y: Variable objetivo. Si es None, se carga Iris binario.
         test_size: Proporcion destinada al conjunto de prueba.
         random_state: Semilla para reproducibilidad.
 
-    Returns:
+    Devuelve:
         Diccionario con train/test sin escalar, train/test escalados,
         etiquetas, nombres de variables y el StandardScaler ajustado.
     """
@@ -160,10 +160,10 @@ def save_processed_splits(split_data: dict[str, object], output_dir: str | Path)
 def load_processed_splits(data_dir: str | Path) -> dict[str, object]:
     """Carga los splits generados por el notebook 00.
 
-    Args:
+    Parametros:
         data_dir: Carpeta `data/processed` donde vive `iris_binary_splits.npz`.
 
-    Returns:
+    Devuelve:
         Diccionario con DataFrames y Series listos para modelar.
     """
 
@@ -193,14 +193,14 @@ def load_processed_splits(data_dir: str | Path) -> dict[str, object]:
 def plot_decision_boundary(model, X_2d, y, feature_names, title):
     """Dibuja la frontera de decision de un modelo entrenado con dos variables.
 
-    Args:
+    Parametros:
         model: Estimador con `predict_proba` o `predict`.
         X_2d: DataFrame/array con exactamente dos columnas.
         y: Etiquetas binarias alineadas con X_2d.
         feature_names: Nombres de las dos variables.
         title: Titulo descriptivo de la figura.
 
-    Returns:
+    Devuelve:
         Tupla `(fig, ax)` para permitir ajustes desde el notebook.
     """
 
