@@ -1,6 +1,6 @@
-"""Utilidades compartidas para el curso de regresion logistica con Iris.
+"""Utilidades compartidas para el curso de regresión logística con Iris.
 
-El modulo centraliza la carga del dataset binario, el split reproducible,
+El módulo centraliza la carga del dataset binario, el split reproducible,
 el guardado/carga de datos procesados y las visualizaciones recurrentes.
 """
 
@@ -58,9 +58,9 @@ def set_plot_style() -> None:
 def load_binary_iris() -> tuple[pd.DataFrame, pd.Series]:
     """Carga Iris y conserva solo versicolor y virginica.
 
-    La variable objetivo se relabela de forma pedagogica: versicolor=0 y
+    La variable objetivo se relabela de forma pedagógica: versicolor=0 y
     virginica=1. Setosa se excluye porque es casi trivialmente separable y
-    produciria una demostracion menos informativa de la regresion logistica.
+    produciría una demostración menos informativa de la regresión logística.
 
     Devuelve:
         X: DataFrame con las cuatro variables originales de Iris.
@@ -86,10 +86,10 @@ def get_train_test_split(
 ) -> dict[str, object]:
     """Crea un split estratificado y versiones escaladas/no escaladas.
 
-    Parametros:
+    Parámetros:
         X: Matriz de variables. Si es None, se carga Iris binario.
         y: Variable objetivo. Si es None, se carga Iris binario.
-        test_size: Proporcion destinada al conjunto de prueba.
+        test_size: Proporción destinada al conjunto de prueba.
         random_state: Semilla para reproducibilidad.
 
     Devuelve:
@@ -136,7 +136,7 @@ def get_train_test_split(
 
 
 def save_processed_splits(split_data: dict[str, object], output_dir: str | Path) -> Path:
-    """Guarda los splits compartidos en formato NPZ pequeno y reproducible."""
+    """Guarda los splits compartidos en formato NPZ pequeño y reproducible."""
 
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
@@ -160,7 +160,7 @@ def save_processed_splits(split_data: dict[str, object], output_dir: str | Path)
 def load_processed_splits(data_dir: str | Path) -> dict[str, object]:
     """Carga los splits generados por el notebook 00.
 
-    Parametros:
+    Parámetros:
         data_dir: Carpeta `data/processed` donde vive `iris_binary_splits.npz`.
 
     Devuelve:
@@ -191,14 +191,14 @@ def load_processed_splits(data_dir: str | Path) -> dict[str, object]:
 
 
 def plot_decision_boundary(model, X_2d, y, feature_names, title):
-    """Dibuja la frontera de decision de un modelo entrenado con dos variables.
+    """Dibuja la frontera de decisión de un modelo entrenado con dos variables.
 
-    Parametros:
+    Parámetros:
         model: Estimador con `predict_proba` o `predict`.
         X_2d: DataFrame/array con exactamente dos columnas.
         y: Etiquetas binarias alineadas con X_2d.
         feature_names: Nombres de las dos variables.
-        title: Titulo descriptivo de la figura.
+        title: Título descriptivo de la figura.
 
     Devuelve:
         Tupla `(fig, ax)` para permitir ajustes desde el notebook.
@@ -259,7 +259,7 @@ def plot_decision_boundary(model, X_2d, y, feature_names, title):
 
 
 def plot_sigmoid():
-    """Dibuja la funcion logistica y senala el umbral probabilistico 0.5."""
+    """Dibuja la función logística y señala el umbral probabilístico 0.5."""
 
     z = np.linspace(-8, 8, 500)
     probability = 1 / (1 + np.exp(-z))
@@ -274,7 +274,7 @@ def plot_sigmoid():
         xytext=(1.0, 0.25),
         arrowprops={"arrowstyle": "->", "color": COLOR_PALETTE["neutral"]},
     )
-    ax.set_title("Funcion logistica: del log-odds a la probabilidad")
+    ax.set_title("Función logística: del log-odds a la probabilidad")
     ax.set_xlabel("Predictor lineal / log-odds")
     ax.set_ylabel("Probabilidad P(y=1 | x)")
     ax.set_ylim(-0.03, 1.03)
@@ -283,7 +283,7 @@ def plot_sigmoid():
 
 
 def plot_coefficients(coefs, feature_names, title):
-    """Grafica coeficientes de un modelo logistico en barras ordenadas."""
+    """Genera una gráfica de coeficientes de un modelo logístico en barras ordenadas."""
 
     coef_df = pd.DataFrame({"feature": feature_names, "coeficiente": np.ravel(coefs)})
     coef_df = coef_df.reindex(coef_df["coeficiente"].abs().sort_values().index)
@@ -304,11 +304,11 @@ def plot_coefficients(coefs, feature_names, title):
 
 
 def plot_regularization_path(C_values, coefs_matrix, feature_names, title):
-    """Dibuja la ruta de coeficientes contra C en escala logaritmica.
+    """Dibuja la ruta de coeficientes contra C en escala logarítmica.
 
-    En scikit-learn, C es el inverso de la fuerza de regularizacion:
-    valores pequenos implican penalizacion fuerte y valores grandes implican
-    penalizacion debil.
+    En scikit-learn, C es el inverso de la fuerza de regularización:
+    valores pequeños implican penalización fuerte y valores grandes implican
+    penalización débil.
     """
 
     fig, ax = plt.subplots(figsize=(9, 5.5))
